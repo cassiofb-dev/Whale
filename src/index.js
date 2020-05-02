@@ -40,7 +40,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', message => {
-	if(!message.content.startsWith(whale.prefix) && message.author.tag === client.user.tag) return;
+	if(!message.content.startsWith(whale.prefix) || message.author.tag === client.user.tag) return;
 
 	const args = message.content.slice(whale.prefix.length).split(/ +/);
 	const commandName = args.shift().toLowerCase();
