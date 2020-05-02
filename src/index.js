@@ -1,9 +1,11 @@
+require('dotenv').config();
 const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const cooldowns = new Discord.Collection();
 const commandFiles = fs.readdirSync('./src/commands/').filter(file => file.endsWith('.js'));
-const whale = require('./assets/whale.json');
+const whale = require('./data/whale.json');
+const token = process.env.TOKEN;
 
 client.commands = new Discord.Collection();
 
@@ -12,7 +14,7 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-client.login(whale.token);
+client.login(token);
 
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}`);

@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const UrbanDictionary = require('../services/urban-dictionary.js');
-const trim = require('../assets/trim');
+const trim = require('../utils/trim.js');
 
 module.exports = {
 	name: 'define',

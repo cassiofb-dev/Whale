@@ -1,4 +1,4 @@
-const { prefix } = require('../assets/whale.json');
+const { prefix } = require('../data/whale.json');
 
 module.exports = {
 	name: 'help',
