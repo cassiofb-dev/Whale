@@ -71,6 +71,7 @@ module.exports = {
 		const received = await fetch(url, options).then(response => response.json());
 
 		const gallery = received.data;
+		if(gallery.length === 0) return null;
 		let tries = 0;
 		while(tries < 30) {
 			tries++;
