@@ -33,14 +33,14 @@ client.on('guildDelete', guild => {
 
 client.on('guildMemberAdd', member => {
 	// Send the message to a designated channel on a server:
-	const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome');
+	const channel = member.guild.channels.cache.find(ch => ch.name === '🌺new-people');
 	// Do nothing if the channel wasn't found on this server
 	if (!channel) return;
 	channel.send(`Welcome to Whale talk, ${member}!`);
 });
 
 client.on('message', message => {
-	if(!message.content.startsWith(whale.prefix)) return;
+	if(!message.content.startsWith(whale.prefix) && message.author.tag === client.user.tag) return;
 
 	const args = message.content.slice(whale.prefix.length).split(/ +/);
 	const commandName = args.shift().toLowerCase();
