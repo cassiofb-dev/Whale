@@ -1,0 +1,20 @@
+{
+  "name": "whale",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "node-fetch": "^2.6.0"
+  },
+  "keywords": [],
+  "author": "cassiofb-dev",
+  "license": "MIT"
+}
