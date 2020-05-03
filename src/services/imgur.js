@@ -19,7 +19,7 @@ module.exports = {
 				'Authorization': clientId,
 			},
 		};
-		const url = 'https://api.imgur.com/3/gallery/search/time/all/1?q=' + querystring.unescape(input);
+		const url = 'https://api.imgur.com/3/gallery/search/time/all/0?q=' + querystring.unescape(input);
 		const received = await fetch(url, options).then(response => response.json());
 		const gallery = received.data;
 		if(gallery.length === 0) return null;
@@ -43,10 +43,11 @@ module.exports = {
 		const section = ['hot/', 'top/', 'user/'];
 		const sort = ['viral/', 'top/', 'time/'];
 		const page = String(Math.floor(Math.random() * 10)) + '/';
+		const window = ['day', 'week', 'month', 'year', 'all'];
 		const random_key = keys => {
 			return keys[Math.floor(Math.random() * keys.length)];
 		};
-		const keys_string = random_key(section) + random_key(sort) + page + 'all';
+		const keys_string = random_key(section) + random_key(sort) + page + random_key(window);
 		const url = 'https://api.imgur.com/3/gallery/' + keys_string;
 		const received = await fetch(url, options).then(response => response.json());
 		return received.data;
