@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Discord = require('discord.js');
 const Imgur = require('../services/imgur');
 
@@ -7,7 +8,8 @@ module.exports = {
 	cooldown: 3,
 	aliases: ['random-img', 'pic'],
 	async execute(message, args) {
-		const img = (args.length === 0) ? await Imgur.random_image('Client-ID b06d325874bf57f') : await Imgur.search_image(args.join(' '), 'Client-ID b06d325874bf57f');
+		const imgur_token = process.env.IMGUR_TOKEN;
+		const img = (args.length === 0) ? await Imgur.random_image(imgur_token) : await Imgur.search_image(args.join(' '), imgur_token);
 		if(!img) return message.channel.send('Couldn\'t get image');
 		const embed = new Discord.MessageEmbed()
 			.setColor('#00aaff')
