@@ -43,11 +43,10 @@ module.exports = {
 		const section = ['hot/', 'top/', 'user/'];
 		const sort = ['viral/', 'top/', 'time/'];
 		const page = String(Math.floor(Math.random() * 10)) + '/';
-		const window = ['day', 'week', 'month', 'year', 'all'];
 		const random_key = keys => {
 			return keys[Math.floor(Math.random() * keys.length)];
 		};
-		const keys_string = random_key(section) + random_key(sort) + page + random_key(window);
+		const keys_string = random_key(section) + random_key(sort) + page + 'all';
 		const url = 'https://api.imgur.com/3/gallery/' + keys_string;
 		const received = await fetch(url, options).then(response => response.json());
 		return received.data;
