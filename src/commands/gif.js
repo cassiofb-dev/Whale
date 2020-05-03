@@ -16,7 +16,7 @@ module.exports = {
 			.addFields(
 				{ name: 'Author title', value: gif.title || 'No title 😢' },
 			)
-			.setImage(gif.url);
+			.setImage(gif.source);
 		message.channel.send(embed);
 	},
 };
