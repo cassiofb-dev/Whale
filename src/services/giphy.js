@@ -8,7 +8,7 @@ module.exports = {
         const received = await fetch(api_url + query).catch(e => console.log(e)).then(r => r.json());
         if(!received.data.length) return null;
         const gifs = received.data;
-        const gif = gifs[Math.floor(Math.random() * gifs.length)];
+        const gif = gifs[Math.floor(Math.random() * 10)];
         return {
             url: gif.images.original.url,
             original: gif,
