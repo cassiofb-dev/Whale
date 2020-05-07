@@ -1,16 +1,18 @@
 const fetch = require('node-fetch');
 const querystring = require('querystring');
-const api_url = 'https://api.giphy.com/v1/gifs/search?';
+const api_url = 'https://api.tenor.com/v1/search?';
 
 module.exports = {
     gif: async (input, key) => {
-        const query = querystring.stringify({ api_key: key, q: input });
+        const query = querystring.stringify({ q: input, key: key });
         const received = await fetch(api_url + query).catch(e => console.log(e)).then(r => r.json());
-        if(!received.data.length) return null;
-        const gifs = received.data;
+        const gifs = received.results;
+        if(!gifs.length) return null;
         const gif = gifs[Math.floor(Math.random() * gifs.length)];
         return {
-            url: gif.images.original.url,
+            searchurl: received.weburl,
+            weburl: gif.url,
+            url: gif.media[0].gif.url,
             original: gif,
         };
     }
